@@ -51,12 +51,12 @@ Begitu pula dengan feature purchases ('NumWebPurchases','NumCatalogPurchases','N
 
 ![eda response](images/git4.PNG)
 
-Sementara pada category-plot terdapat insight menarik pada feature response yaitu adanya ketimpangan antara customer yang merespon dengan tidak merespon. Hal ini menunjukkan adanya class imbalance, dimana nantinya harus dilakukan over/undersampling pada tahap pre-processing.
+> Sementara pada category-plot terdapat insight menarik pada feature response yaitu adanya ketimpangan antara customer yang merespon dengan tidak merespon. Hal ini menunjukkan adanya class imbalance, dimana nantinya harus dilakukan over/undersampling pada tahap pre-processing.
 
 
 ### Multivariate Analysis
 ![eda heatmap](images/heatmap.png)
-Dari heatmap plot, terlihat feature AcceptedCmp1 dan AcceptedCmp5 punya korelasi paling tinggi dengan target response dengan nilai masing-masing 0.33 dan 0.29.
+> Dari heatmap plot, terlihat feature AcceptedCmp1 dan AcceptedCmp5 punya korelasi paling tinggi dengan target response dengan nilai masing-masing 0.33 dan 0.29.
 
 Dan berikut merupakan beberapa feature yang kemungkinan akan kami pertahankan dan gunakan untuk analisis kedepannya:
 - Recency
@@ -67,4 +67,48 @@ Dan berikut merupakan beberapa feature yang kemungkinan akan kami pertahankan da
 - AcceptedCmp5
 - AcceptedCmp1 
 
-Dari seluruh korelasi antara feature-target, seluruhnya berada di range 0.00 sampai 0.33. Oleh karena itu, kami memutuskan untuk membuat nilai threshold di angka 0.20. Feature-feature di atas yang kami pertahankan adalah feature yang memiliki nilai korelasi >0.20.
+> Dari seluruh korelasi antara feature-target, seluruhnya berada di range 0.00 sampai 0.33. Oleh karena itu, kami memutuskan untuk membuat nilai threshold di angka 0.20. Feature-feature di atas yang kami pertahankan adalah feature yang memiliki nilai korelasi >0.20.
+
+Selain itu, berdasarkan analisa awal antar-fitur yang kami lakukan terhadap fitur yang memiliki korelasi lebih tinggi dengan target, didapatkan hasil sebagai berikut:
+
+*[Recency]*: Nilai korelasi Recency dengan feature lainnya memiliki range 0.00 sampai 0.05
+
+*[MntWines]*: Berikut adalah feature yang berkorelasi dengan MntWines: Income(0.58), NumCatalogPurchases(0.64), NumStorePurchases(0.64)
+
+*[MntMeatProducts]*: Berikut adalah feature yang berkorelasi dengan MntMeatProducts: NumCatalogPurchases(0.72), Income(0.58), MntWines(0.56)
+
+*[NumCatalogPurchases]*: Berikut adalah feature yang berkorelasi dengan NumCatalogPurchases: MntMeatProducts(0.72), MntWines(0.64),Income(0.59)
+
+*[AcceptedCmp3]*: Berikut adalah feature yang berkorelasi dengan AcceptedCmp3: MntGoldProducts(0.12)
+
+*[AcceptedCmp5]*: Berikut adalah feature yang berkorelasi dengan AcceptedCmp5: MntWines(0.47), MntMeatProducts(0.37), Income(0.34)
+
+*[AcceptedCmp1]*: Berikut adalah feature yang berkorelasi dengan AcceptedCmp1: AcceptedCmp5(0.40), MntWines(0.35), MntMeatProducts(0.31), NumCatalogPurchases(0.31)
+
+> Dari hasil tersebut, kemungkinan besar nantinya akan kami gunakan sebagai fitur prioritas dalam keputusan penentuan indikator pendukung untuk pengkategorisasian customer mana yang layak diberikan campaign.
+
+## 4. Business Insights & Recommendations
+### Business Insights
+- Bagaimana pengaruh memiliki kidhome dan teenhome terhadap tingkat respon customer?
+<img width="221" alt="image" src="https://user-images.githubusercontent.com/88579085/212469050-f9328cc6-cb05-4a3a-bffc-8ee05c6fd780.png">
+<img width="240" alt="image" src="https://user-images.githubusercontent.com/88579085/212469071-dcc51597-7187-4304-bb56-0b508b9f4ff3.png">
+<img width="442" alt="image" src="https://user-images.githubusercontent.com/88579085/212469081-afb0c656-ee40-47a8-9b13-81a6829ac992.png">
+<img width="432" alt="image" src="https://user-images.githubusercontent.com/88579085/212469095-d0848247-7312-43ff-ba11-1125d3c55b4d.png">
+
+- Bagaimana persentase customer yang Respon dan Tidak Respon dengan status pernikahan?
+<img width="728" alt="image" src="https://user-images.githubusercontent.com/88579085/212469194-ef9914e6-2a94-40e0-ba3b-9de3a57d4126.png">
+
+- Bagaimana persentase customer yang Respon dan Tidak Respon dengan education level?
+<img width="709" alt="image" src="https://user-images.githubusercontent.com/88579085/212469226-864b4796-1dae-4a4d-8e37-457ca67c6150.png">
+
+### Business Recommendations
+Berdasarkan data visualisasi, maka tim Data Scientist dapat memberikan rekomendasi untuk tim marketing, berupa:
+
+- Dari visualisasi kidhome dan teenhome, dapat dilihat bahwa customer yang merespon terbanyak berasal dari customer yang tidak mempunyai anak dan tidak mempunyai remaja (0.265403), sehingga marketing team dapat memfokuskan campaign ke customer yang tidak mempunyai anak dan tidak mempunyai remaja.
+- Dari visualisasi piechart Marital Status, dapat dilihat bahwa customer yang merespon terbanyak berasal dari customer yang berstatus Absurd (50%) dan Yolo(50%), disusul dengan Alone(33%) dan Widow (25%), sehingga marketing team dapat memfokuskan campaign ke customer "Absurd" dan "Yolo".
+- Dari visualisai piechart Education, dapat dilihat bahwa customer yang merespon terbanyak berasal dari customer yang memiliki edukasi PhD (20.78%), disusul dengan Master (15.41%), sehingga marketing team dapat memfokuskan campaign ke customer yang beredukasi "PhD".
+
+### Next Improvement
+Selain dari tiga business insight tersebut, kami juga memiliki satu buah insight lagi berupa sebuah trend suatu product yang memiliki korelasi kuat (Gold, Meat, dan Wines) terhadap campaign 1 sampai dengan campaign 5. Kemudian, hasil dari visualisasi insight tersebut nantinya dapat digunakan oleh perusahaan untuk memprioritaskan produk mana yang akan dijual atau dipromosikan guna menarik jumlah customer. Sehingga diharapkan dengan adanya kenaikan jumlah customer tersebut, jumlah revenue perusahaan pun dapat bertambah.
+
+Namun, dikarenakan keterbatasan waktu, kami belum sempat membuat visualisasi insight terakhir tersebut dan berencana untuk menjadikannya sebagai next improvements.
