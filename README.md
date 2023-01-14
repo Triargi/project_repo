@@ -57,3 +57,15 @@ Sementara pada category-plot terdapat insight menarik pada feature response yait
 ### Multivariate Analysis
 ![eda heatmap](images/heatmap.png)
 Dari heatmap plot, terlihat feature AcceptedCmp1 dan AcceptedCmp5 punya korelasi paling tinggi dengan target response dengan nilai masing-masing 0.33 dan 0.29.
+
+Dan berikut merupakan beberapa feature yang kemungkinan akan kami pertahankan dan gunakan untuk analisis kedepannya:
+
+Recency
+MntWines
+MntMeatProducts
+NumCatalogPurchases
+AcceptedCmp3
+AcceptedCmp5
+AcceptedCmp1 
+
+Dari seluruh korelasi antara feature-target, seluruhnya berada di range 0.00 sampai 0.33. Oleh karena itu, kami memutuskan untuk membuat nilai threshold di angka 0.20. Feature-feature di atas yang kami pertahankan adalah feature yang memiliki nilai korelasi >0.20.
