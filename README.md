@@ -251,16 +251,6 @@ Use oversampling
 
 > Dikarenakan adanya class imbalance atau ketimpangan data yang sangat jauh pada kolom target (response) dan jumlah sample yang dipelajari ML lebih banyak (1692 sample), maka dari itu kami memutuskan menggunakan oversampling untuk menghandle problem tersebut.
 
-#### Feature Transformation II
-##### Standardization
-Variance before standardization
-
-<img width="146" alt="image" src="https://user-images.githubusercontent.com/88579085/213913074-ddf156ed-a8a3-4c9b-95f2-15a72ebe247d.png">
-
-Variance after standardization
-
-<img width="171" alt="image" src="https://user-images.githubusercontent.com/88579085/213913088-e59e289b-8029-41c0-aa41-20af8a074050.png">
-
 #### Feature Tambahan
 1. ***Area/ Region*** Lokasi tempat tinggal customer dapat mempengaruhi tingkat respon customer terhadap pembelian barang. Semakin dekat tempat tinggal mereka dengan pusat kota, kemungkinan semakin sedikit yang merespon dikarenakan banyaknya kompetisi campaign dari market lainnya di sekitar kota.
 2. ***Time call*** Waktu ketika ditelepon: pada saat jam kerja atau jam istirahat.
